@@ -39,7 +39,7 @@ body {
     max-width: 800px;
 }
 
-#main__img-cat {
+.main__img-cat {
     border-radius: 2rem;
 }
 
