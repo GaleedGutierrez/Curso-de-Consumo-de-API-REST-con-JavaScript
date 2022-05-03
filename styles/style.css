@@ -16,7 +16,7 @@ img {
 
 body {
     font-family: 'Roboto', sans-serif;
-    height: 100vh;
+    height: 100%;
     background-color: #121f3d;
 }
 
@@ -27,6 +27,8 @@ body {
     flex-direction: column;
     gap: 3rem;
     height: 100%;
+    margin-block-start: 3rem;
+    margin-block-end: 3rem;
     color: white;
 }
 
