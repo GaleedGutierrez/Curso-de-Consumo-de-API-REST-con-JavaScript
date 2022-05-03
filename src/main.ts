@@ -1,18 +1,17 @@
 import { ApiCat } from "./interfaces";
 
-async function refreshImg (
-    containerImgs: HTMLImageElement[],
-    url: string
-    ): Promise<void> {
+const refreshImg = async (
+        containerImgs: HTMLImageElement[],
+        url: string
+    ): Promise<void> => {
     const request = await fetch(url);
     const data: ApiCat[] = await request.json();
-    console.log('data: ', data);
     for (let i = 0; i < data.length; i++) {
         containerImgs[i].src = data[i].url;
     }
-}
+};
 
-function bodyImgConfig (imgElement: HTMLImageElement): void {
+const bodyImgConfig = (imgElement: HTMLImageElement): void => {
     let entered = false;
     if (imgElement.height >= 800) {
         containerImg.classList.add('main__figure-img-container--small');
@@ -20,18 +19,19 @@ function bodyImgConfig (imgElement: HTMLImageElement): void {
     }
     const removeClass = imgElement.height <= 800 && containerImg.classList.contains('main__figure-img-container--small') && !entered;
     if (removeClass) containerImg.classList.remove('main__figure-img-container--small');
-}
-
-const cto = () => {
-    refreshImg(containerImgs, url);
 };
 
-const url = 'https://api.thecatapi.com/v1/images/search?limit=3';
-const img1 = <HTMLImageElement><unknown>document.getElementById('main__img-cat-id');
-const img2 = <HTMLImageElement><unknown>document.getElementById('main__img-cat-id-2');
-const img3 = <HTMLImageElement><unknown>document.getElementById('main__img-cat-id-3');
-const containerImg = <HTMLElement><unknown>document.getElementById('main__figure-img-container-ID');
-const button = <HTMLElement><unknown>document.getElementById('button');
+const cto = () => {
+    refreshImg(containerImgs,  API_URL);
+};
+
+const API_KEY = 'd0bb4eed-2aec-4eaa-8ad7-2639796348e8';
+const API_URL = `https://api.thecatapi.com/v1/images/search?limit=3&api_key=${API_KEY}`;
+const img1 = document.getElementById('main__img-cat-id') as HTMLImageElement;
+const img2 = document.getElementById('main__img-cat-id-2') as HTMLImageElement;
+const img3 = document.getElementById('main__img-cat-id-3') as HTMLImageElement;
+const containerImg = document.getElementById('main__figure-img-container-ID') as HTMLElement;
+const button = document.getElementById('button') as HTMLButtonElement;
 const containerImgs = [img1, img2, img3];
 
 button.addEventListener('click', cto);
@@ -46,4 +46,4 @@ img3.addEventListener("load", () => {
     bodyImgConfig(img1);
 });
 
-refreshImg(containerImgs, url);
+refreshImg(containerImgs,  API_URL);
