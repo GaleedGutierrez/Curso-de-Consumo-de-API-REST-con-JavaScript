@@ -1,10 +1,15 @@
 import { ApiCat } from "./interfaces";
 
-async function refreshImg (imgElement: HTMLImageElement, url: string): Promise<void> {
+async function refreshImg (
+    containerImgs: HTMLImageElement[],
+    url: string
+    ): Promise<void> {
     const request = await fetch(url);
-    const response: ApiCat[] = await request.json();
-    const imgCat = response[0].url;
-    imgElement.src = imgCat;
+    const data: ApiCat[] = await request.json();
+    console.log('data: ', data);
+    for (let i = 0; i < data.length; i++) {
+        containerImgs[i].src = data[i].url;
+    }
 }
 
 function bodyImgConfig (imgElement: HTMLImageElement): void {
@@ -17,11 +22,28 @@ function bodyImgConfig (imgElement: HTMLImageElement): void {
     if (removeClass) containerImg.classList.remove('main__figure-img-container--small');
 }
 
-const url = 'https://api.thecatapi.com/v1/images/search';
-const img = <HTMLImageElement><unknown>document.getElementById('main__img-cat');
-const containerImg = <HTMLElement><unknown>document.getElementById('main__figure-img-container-ID');
-refreshImg(img, url);
+const cto = () => {
+    refreshImg(containerImgs, url);
+};
 
-img.addEventListener("load", () => {
-    bodyImgConfig(img);
+const url = 'https://api.thecatapi.com/v1/images/search?limit=3';
+const img1 = <HTMLImageElement><unknown>document.getElementById('main__img-cat-id');
+const img2 = <HTMLImageElement><unknown>document.getElementById('main__img-cat-id-2');
+const img3 = <HTMLImageElement><unknown>document.getElementById('main__img-cat-id-3');
+const containerImg = <HTMLElement><unknown>document.getElementById('main__figure-img-container-ID');
+const button = <HTMLElement><unknown>document.getElementById('button');
+const containerImgs = [img1, img2, img3];
+
+button.addEventListener('click', cto);
+
+img1.addEventListener("load", () => {
+    bodyImgConfig(img1);
 });
+img2.addEventListener("load", () => {
+    bodyImgConfig(img1);
+});
+img3.addEventListener("load", () => {
+    bodyImgConfig(img1);
+});
+
+refreshImg(containerImgs, url);
