@@ -1,0 +1,115 @@
+p {
+  color: #232830;
+}
+
+h1 {
+  font-size: 3.2rem;
+  line-height: 3.6rem;
+  font-weight: 500;
+}
+
+p,
+a {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 400;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 400;
+}
+
+img,
+svg {
+  width: 100%;
+}
+
+.main__button {
+  padding: 0.8rem;
+  border: 0.1rem solid transparent;
+  border-radius: 1rem;
+  background-color: #91B888;
+  color: #ffffff;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+}
+
+.main__button:active {
+  background-color: #ffffff;
+  border: 0.1rem solid #91B888;
+  color: #91B888;
+}
+
+.main {
+  -webkit-margin-start: 1rem;
+          margin-inline-start: 1rem;
+  -webkit-margin-end: 1rem;
+          margin-inline-end: 1rem;
+}
+
+.main__title {
+  text-align: center;
+  -webkit-margin-before: 2rem;
+          margin-block-start: 2rem;
+  -webkit-margin-after: 2rem;
+          margin-block-end: 2rem;
+}
+
+.main__ramdom-michis-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(30rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 3rem;
+  height: 100%;
+}
+
+.main__cat-button-container {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  gap: 0.8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main__figure-img-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 35.1rem;
+}
+
+.main__imgs-cats {
+  border-radius: 2rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+/*# sourceMappingURL=style.css.map */

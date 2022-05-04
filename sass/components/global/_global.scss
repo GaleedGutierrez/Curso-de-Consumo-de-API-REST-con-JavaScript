@@ -1,0 +1,27 @@
+@import "./_colors.scss";
+@import "./_typography.scss";
+@import "./_mixins.scss";
+@import "../ts/_typescript.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    outline: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: $font-primary;
+    @include font-small;
+}
+
+img,
+svg {
+    width: 100%;
+}
