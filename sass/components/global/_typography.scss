@@ -1,0 +1,72 @@
+// font family
+$font-primary: "League Spartan", sans-serif;
+
+// font size
+@mixin font-x-large {
+    font-size: 3.2rem;
+    line-height: 3.6rem;
+    font-weight: 500;
+}
+
+@mixin font-large {
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    font-weight: 500;
+}
+
+@mixin font-medium {
+    font-size: 2.1rem;
+    line-height: 2.8rem;
+    font-weight: 400;
+}
+
+@mixin font-small {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 400;
+}
+
+@mixin font-page-heading {
+    @include large;
+    font-weight: 500;
+}
+
+@mixin font-heading {
+    font-size: 1.7rem;
+    line-height: 2.4rem;
+    font-weight: 500;
+}
+
+@mixin font-subheading {
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+@mixin font-button {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+}
+
+@mixin font-body {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 400;
+}
+
+@mixin font-caption {
+    font-size: 1.3rem;
+    line-height: 2rem;
+    font-weight: 400;
+}
+
+h1 {
+    @include x-large;
+}
+
+p,
+a {
+    @include font-small;
+}
