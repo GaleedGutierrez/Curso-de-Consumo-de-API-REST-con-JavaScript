@@ -1,7 +1,26 @@
-extend ../components/global/_global.pug
+extend ./components/global/_global.pug
 block head
     +style-head("style.css")
     //- +style-head-responsive("login/desktop.css", "1024")
     +titles("Ramdom Cats")
 block main
     main.main
+        h1.main__title Michis App
+        section#ramdon-michis-id.main__ramdom-michis-container
+            article.main__cat-button-container
+                +img("random-michis__img-cat-1-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-1-id.main__figure-img-container
+                button.main__button Save Michi
+            article.main__cat-button-container
+                +img("random-michis__img-cat-2-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-2-id.main__figure-img-container
+                button.main__button Save Michi
+            article.main__cat-button-container
+                +img("random-michis__img-cat-3-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-3-id.main__figure-img-container
+                button.main__button Save Michi
+            article.main__cat-button-container
+                +img("random-michis__img-cat-4-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-4-id.main__figure-img-container
+                button.main__button Save Michi
+        section#favorites-michis-id
+            h2 Favorite Cat
+            +img("img-cat-favorite", "Image cat random favorite")
+            button.main__button Delete Michi
+        button#main__button-refresh-id.main__button.main__button-refresh Refresh

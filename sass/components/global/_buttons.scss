@@ -1,0 +1,14 @@
+.main__button {
+    padding: 0.8rem;
+    border: 0.1rem solid transparent;
+    border-radius: 1rem;
+    background-color: $hospital-green-hard;
+    color: $white;
+    @include font-button;
+}
+
+.main__button:active {
+    background-color: $white;
+    border: 0.1rem solid $hospital-green-hard;
+    color: $hospital-green-hard;
+}

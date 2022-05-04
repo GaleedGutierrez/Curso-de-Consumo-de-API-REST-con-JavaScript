@@ -1,0 +1,38 @@
+@import './components/global/_global.scss';
+@import './components/global/buttons';
+
+.main {
+    margin-inline-start: 1rem;
+    margin-inline-end: 1rem;
+}
+
+.main__title {
+    text-align: center;
+    margin-block-start: 2rem;
+    margin-block-end: 2rem;
+}
+
+.main__ramdom-michis-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 3rem;
+    height: 100%;
+}
+
+.main__cat-button-container {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+    @include all-center-display-flex;
+}
+
+.main__figure-img-container {
+    display: flex;
+    height: 35.1rem;
+}
+
+.main__imgs-cats {
+    border-radius: 2rem;
+    object-fit: cover;
+}
+

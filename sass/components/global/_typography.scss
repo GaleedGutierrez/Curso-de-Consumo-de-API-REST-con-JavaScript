@@ -63,7 +63,7 @@ $font-primary: "League Spartan", sans-serif;
 }
 
 h1 {
-    @include x-large;
+    @include font-x-large;
 }
 
 p,

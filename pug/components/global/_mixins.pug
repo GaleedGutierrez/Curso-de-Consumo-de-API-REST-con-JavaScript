@@ -7,7 +7,7 @@ mixin style-head(style)
 mixin style-head-responsive(stylesResponsive, screen)
     link(rel="stylesheet", href="../css/"+stylesResponsive media="screen and (min-width:" +screen+"px)")
 
-mixin figure-img(srcImg, altImg)
-    figure(class!=attributes.class)
-        img(src=srcImg, alt=altImg)
+mixin img(idImg, classImg, altImg)
+    figure(id!=attributes.id ,class!=attributes.class)
+        img(id=idImg, class=classImg, alt=altImg)
 
