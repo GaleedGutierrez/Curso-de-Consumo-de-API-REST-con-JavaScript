@@ -21,6 +21,10 @@ body {
     @include font-small;
 }
 
+figure {
+    display: flex;
+}
+
 img,
 svg {
     width: 100%;

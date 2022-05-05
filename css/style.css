@@ -4,12 +4,14 @@ p {
 
 h1 {
   font-size: 3.2rem;
+  line-height: 3.6rem;
   font-weight: 500;
 }
 
 p,
 a {
   font-size: 1.6rem;
+  line-height: 2.4rem;
   font-weight: 400;
 }
 
@@ -30,7 +32,14 @@ html {
 
 body {
   font-size: 1.6rem;
+  line-height: 2.4rem;
   font-weight: 400;
+}
+
+figure {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 img,
@@ -45,6 +54,7 @@ svg {
   background-color: #91B888;
   color: #ffffff;
   font-size: 1.5rem;
+  line-height: 1.5rem;
   font-weight: 500;
 }
 
@@ -54,25 +64,13 @@ svg {
   color: #91B888;
 }
 
-.main {
-  -webkit-margin-start: 1rem;
-          margin-inline-start: 1rem;
-  -webkit-margin-end: 1rem;
-          margin-inline-end: 1rem;
+.main__button-refresh {
+  display: block;
+  margin: 0 auto;
 }
 
-.main__title {
-  text-align: center;
-  -webkit-margin-before: 2rem;
-          margin-block-start: 2rem;
-  -webkit-margin-after: 2rem;
-          margin-block-end: 2rem;
-}
-
-.main__error {
-  text-align: center;
-  -webkit-margin-after: 0.8rem;
-          margin-block-end: 0.8rem;
+.hidden {
+  display: none;
 }
 
 .main__ramdom-michis-container {
@@ -103,9 +101,6 @@ svg {
 }
 
 .main__figure-img-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   height: 35.1rem;
 }
 
@@ -113,5 +108,66 @@ svg {
   border-radius: 2rem;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.main__favorites-michis {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main__error {
+  text-align: center;
+  -webkit-margin-after: 0.8rem;
+          margin-block-end: 0.8rem;
+}
+
+.main__error-section {
+  max-width: 50rem;
+  padding: 2rem;
+  margin: 0 auto;
+  border-radius: 2rem;
+  background-color: #c7c7c7;
+}
+
+.error-section__error-text {
+  text-align: center;
+  font-weight: 600;
+}
+
+.main__error-section {
+  -webkit-margin-after: 2rem;
+          margin-block-end: 2rem;
+}
+
+.error-section__http-code-errors-img {
+  -webkit-margin-before: 0.8rem;
+          margin-block-start: 0.8rem;
+  border-radius: 2rem;
+}
+
+.main {
+  -webkit-margin-start: 1rem;
+          margin-inline-start: 1rem;
+  -webkit-margin-end: 1rem;
+          margin-inline-end: 1rem;
+}
+
+.main__title {
+  text-align: center;
+  -webkit-margin-before: 2rem;
+          margin-block-start: 2rem;
+  -webkit-margin-after: 2rem;
+          margin-block-end: 2rem;
 }
 /*# sourceMappingURL=style.css.map */
