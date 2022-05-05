@@ -6,6 +6,9 @@ block head
 block main
     main.main
         h1.main__title Michis App
+        section#main__error-section-id.main__error-section.hidden
+            h3#main__error-id.error-section__error-text
+            +img("error-section__http-code-errors-img-id", "error-section__http-code-errors-img","Image referring to the error obtained").error-section__figure-img-container
         section#ramdon-michis-id.main__ramdom-michis-container
             article.main__cat-button-container
                 +img("random-michis__img-cat-1-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-1-id.main__figure-img-container
@@ -13,13 +16,13 @@ block main
             article.main__cat-button-container
                 +img("random-michis__img-cat-2-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-2-id.main__figure-img-container
                 button.main__button Save Michi
-            article.main__cat-button-container
-                +img("random-michis__img-cat-3-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-3-id.main__figure-img-container
-                button.main__button Save Michi
-            article.main__cat-button-container
-                +img("random-michis__img-cat-4-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-4-id.main__figure-img-container
-                button.main__button Save Michi
-        section#favorites-michis-id
+            //- article.main__cat-button-container
+            //-     +img("random-michis__img-cat-3-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-3-id.main__figure-img-container
+            //-     button.main__button Save Michi
+            //- article.main__cat-button-container
+            //-     +img("random-michis__img-cat-4-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-4-id.main__figure-img-container
+            //-     button.main__button Save Michi
+        section#main__favorites-michis-id.main__favorites-michis
             h2 Favorite Cat
             +img("img-cat-favorite", "Image cat random favorite")
             button.main__button Delete Michi

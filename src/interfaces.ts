@@ -5,3 +5,10 @@ export interface ApiCat {
     width:  number;
     height: number;
 }
+
+export interface ApiCatError {
+    headers: Headers;
+    level:   string;
+    message: string;
+    status:  number;
+}
