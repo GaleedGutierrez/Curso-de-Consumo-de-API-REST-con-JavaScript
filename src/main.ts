@@ -1,9 +1,9 @@
-import { API_URL_FAVORITES, API_URL_RANDOM } from "./api.js";
+import { API_URL_RANDOM } from "./api.js";
 import { httpCodes } from "./codeErrorHTTP.js";
-import { button, errorSection, img1, img2, imgHttpCode, pError } from "./htmlElements.js";
+import { errorSection, imgHttpCode, pError, imgs } from "./htmlElements.js";
 import { ApiCat, ApiCatError } from "./interfaces";
 
-const loadRandomMichis = async (
+export const loadRandomMichis = async (
         imgs: HTMLImageElement[],
         url: string
     ): Promise<void> => {
@@ -13,7 +13,10 @@ const loadRandomMichis = async (
         if (request.status !== 200) {
             const data: ApiCatError = await request.json();
             httpCodes(imgHttpCode, data.status);
-            throw new Error(`There was an error. HTTP Code: ${request.status}.`);
+            throw new Error(`There was an error.
+                HTTP Code: ${request.status}.
+                Message: ${data.message}.`
+            );
         }
         const data: ApiCat[] = await request.json();
         for (let i = 0; i < data.length; i++) {
@@ -25,8 +28,7 @@ const loadRandomMichis = async (
     }
 };
 
-const loadFavoritesMichis = async (
-        imgs: HTMLImageElement[],
+export const loadFavoriteMichis = async (
         url: string
     ): Promise<void> => {
     try {
@@ -34,9 +36,42 @@ const loadFavoritesMichis = async (
         if (request.status !== 200) {
             const data: ApiCatError = await request.json();
             httpCodes(imgHttpCode, data.status);
-            throw new Error(`There was an error. HTTP Code: ${request.status}.`);
+            throw new Error(`There was an error.
+                HTTP Code: ${request.status}.
+                Message: ${data.message}.`
+            );
+        }
+        const data: ApiCat[] = await request.json();
+        console.log('Favorites', data);
+    } catch (error) {
+        if (error instanceof Error) thereWasAnErrorMessage(error);
+        showErrorSection(errorSection);
+    }
+};
+
+export const saveFavoriteMichis = async (
+        url: string
+    ) => {
+    try {
+        const request = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                image_id: '9ccXTANkb'
+            }),
+        });
+        if (request.status !== 200) {
+            const data: ApiCatError = await request.json();
+            httpCodes(imgHttpCode, data.status);
+            throw new Error(`There was an error.
+                HTTP Code: ${request.status}.
+                Message: ${data.message}.`
+            );
         }
         // const data: ApiCat[] = await request.json();
+        console.log('Save', request);
     } catch (error) {
         if (error instanceof Error) thereWasAnErrorMessage(error);
         showErrorSection(errorSection);
@@ -52,14 +87,5 @@ const thereWasAnErrorMessage = (error: Error) => {
     console.log(error);
 };
 
-const ctoLoadRandomMichis = () => {
-    loadRandomMichis(imgs,  API_URL_RANDOM);
-};
 
-
-
-const imgs = [img1, img2];
-
-button.addEventListener('click', ctoLoadRandomMichis);
 loadRandomMichis(imgs,  API_URL_RANDOM);
-loadFavoritesMichis(imgs,  API_URL_FAVORITES);
