@@ -15,6 +15,12 @@
     margin-block-end: 2rem;
 }
 
+.favorites-michis__title {
+    @extend .main__title;
+}
 
+.favorites-michis__text {
+    text-align: center;
+}
 
 

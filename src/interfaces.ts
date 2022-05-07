@@ -12,3 +12,17 @@ export interface ApiCatError {
     message: string;
     status:  number;
 }
+
+export interface ApiFavoriteCat {
+    created_at: Date;
+    id:         number;
+    image:      ImageFavoriteCat;
+    image_id:   string;
+    sub_id:     null;
+    user_id:    string;
+}
+
+export interface ImageFavoriteCat {
+    id:  string;
+    url: string;
+}

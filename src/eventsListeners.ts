@@ -1,18 +1,10 @@
-import { API_URL_FAVORITES, API_URL_RANDOM } from "./api.js";
-import { button, buttonFavorite1, buttonFavorite2, imgs } from "./htmlElements.js";
-import { loadRandomMichis, saveFavoriteMichis, loadFavoriteMichis } from "./main.js";
+import { API_URL_RANDOM } from "./api.js";
+import { buttonRefresh, imgs } from "./htmlElements.js";
+import { loadRandomMichis} from "./main.js";
 
-const ctoLoadRandomMichis = () => {
-    loadRandomMichis(imgs,  API_URL_RANDOM);
-};
-button.addEventListener('click', ctoLoadRandomMichis);
+buttonRefresh.onclick = () => loadRandomMichis(imgs,  API_URL_RANDOM);
 
 
-const ctoLoadloadFavoriteMichis = () => {
-    saveFavoriteMichis(API_URL_FAVORITES);
-    loadFavoriteMichis(API_URL_FAVORITES);
-};
-buttonFavorite1.addEventListener('click', ctoLoadloadFavoriteMichis);
-buttonFavorite2.addEventListener('click', ctoLoadloadFavoriteMichis);
+
 
 
