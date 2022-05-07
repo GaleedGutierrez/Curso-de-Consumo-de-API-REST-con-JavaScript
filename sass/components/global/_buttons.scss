@@ -1,4 +1,4 @@
-.main__button {
+.button {
     padding: 0.8rem;
     border: 0.1rem solid transparent;
     border-radius: 1rem;
@@ -7,7 +7,7 @@
     @include font-button;
 }
 
-.main__button:active {
+.button:active {
     background-color: $white;
     border: 0.1rem solid $hospital-green-hard;
     color: $hospital-green-hard;
@@ -15,5 +15,5 @@
 
 .main__button-refresh {
     display: block;
-    margin: 0 auto;
+    margin: 3rem auto 2rem auto;
 }

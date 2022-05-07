@@ -9,21 +9,15 @@ block main
         section#main__error-section-id.main__error-section.hidden
             h3#main__error-id.error-section__error-text
             +img("error-section__http-code-errors-img-id", "error-section__http-code-errors-img","Image referring to the error obtained").error-section__figure-img-container
-        section#ramdon-michis-id.main__ramdom-michis-container
-            article.main__cat-button-container
-                +img("random-michis__img-cat-1-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-1-id.main__figure-img-container
-                button#ramdon-michis__button-1-id.main__button Save Michi
-            article.main__cat-button-container
-                +img("random-michis__img-cat-2-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-2-id.main__figure-img-container
-                button#ramdon-michis__button-2-id.main__button Save Michi
-            //- article.main__cat-button-container
-            //-     +img("random-michis__img-cat-3-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-3-id.main__figure-img-container
-            //-     button.main__button Save Michi
-            //- article.main__cat-button-container
-            //-     +img("random-michis__img-cat-4-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-4-id.main__figure-img-container
-            //-     button.main__button Save Michi
-        section#main__favorites-michis-id.main__favorites-michis
-            h2 Favorite Cat
-            +img("img-cat-favorite", "Image cat random favorite")
-            button.main__button Delete Michi
-        button#main__button-refresh-id.main__button.main__button-refresh Refresh
+        section#ramdon-michis-id.main__ramdom-michis-container.main__figures-buttons-containers
+            article.ramdon-michis__cat-button-container.main__article-container
+                +img("random-michis__img-cat-1-id", "main__imgs-cats", "Image cat random")#ramdon-michis__figure-img-container-1-id.ramdon-michis__figure-img-container.main__figure-img
+                button#ramdon-michis__button-1-id.ramdon-michis__button.button Save Michi
+            article.ramdon-michis__cat-button-container.main__article-container
+                +img("random-michis__img-cat-2-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-2-id.main__figure-img-container.main__figure-img
+                button#ramdon-michis__button-2-id.ramdon-michis__button.button Save Michi
+        section#main__favorites-michis-section-id.main__favorites-section-michis
+            h2.favorites-michis__title ❤️ Favorite Cat ❤️
+            p#favorites-michis__text-id.favorites-michis__text Add your fisrt kitty
+            section#favorites-michis__michis-container-id.main__figures-buttons-containers
+        button#main__button-refresh-id.button.main__button-refresh Refresh

@@ -47,7 +47,7 @@ svg {
   width: 100%;
 }
 
-.main__button {
+.button {
   padding: 0.8rem;
   border: 0.1rem solid transparent;
   border-radius: 1rem;
@@ -58,7 +58,7 @@ svg {
   font-weight: 500;
 }
 
-.main__button:active {
+.button:active {
   background-color: #ffffff;
   border: 0.1rem solid #91B888;
   color: #91B888;
@@ -66,14 +66,14 @@ svg {
 
 .main__button-refresh {
   display: block;
-  margin: 0 auto;
+  margin: 3rem auto 2rem auto;
 }
 
 .hidden {
   display: none;
 }
 
-.main__ramdom-michis-container {
+.main__figures-buttons-containers {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (minmax(30rem, 1fr))[auto-fit];
@@ -82,7 +82,7 @@ svg {
   height: 100%;
 }
 
-.main__cat-button-container {
+.main__article-container {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -100,7 +100,7 @@ svg {
           align-items: center;
 }
 
-.main__figure-img-container {
+.main__figure-img {
   height: 35.1rem;
 }
 
@@ -108,22 +108,6 @@ svg {
   border-radius: 2rem;
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-.main__favorites-michis {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .main__error {
@@ -163,11 +147,15 @@ svg {
           margin-inline-end: 1rem;
 }
 
-.main__title {
+.main__title, .favorites-michis__title {
   text-align: center;
   -webkit-margin-before: 2rem;
           margin-block-start: 2rem;
   -webkit-margin-after: 2rem;
           margin-block-end: 2rem;
+}
+
+.favorites-michis__text {
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */
