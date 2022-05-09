@@ -1,17 +1,13 @@
-import { API_URL_FAVORITES, API_URL_RANDOM } from "./api.js";
-import { httpCodes } from "./codeErrorHTTP.js";
-import { errorSection, imgHttpCode, pError, imgs, buttonFavorite2, buttonFavorite1, addFirstKittyParagraph } from "./htmlElements.js";
-import { ApiCat, ApiCatError, ApiFavoriteCat } from "./interfaces";
+import { API_URL_FAVORITES, API_URL_FAVORITE_DELETE, API_URL_RANDOM } from "./api.js";
+import { errorRequest} from "./errors.js";
+import { errorSection, pError, imgs, buttonFavorite2, buttonFavorite1, addFirstKittyParagraph, sectionFavoriteMichis } from "./htmlElements.js";
+import { ApiCat, ApiFavoriteCat } from "./interfaces";
 
-export const loadRandomMichis = async (
-        imgs: HTMLImageElement[],
-        url: string
-    ): Promise<void> => {
+export const loadRandomMichis = async (imgs: HTMLImageElement[], url: string): Promise<void> => {
     try {
         const request = await fetch(url);
         if (request.status !== 200) {
-            const data: ApiCatError = await request.json();
-            httpCodes(imgHttpCode, data.status);
+            const data = await errorRequest(request);
             throw new Error(`There was an error.
                 HTTP Code: ${request.status}.
                 Message: ${data.message}.`
@@ -29,21 +25,20 @@ export const loadRandomMichis = async (
     }
 };
 
-export const loadFavoriteMichis = async (
-        url: string
-    ): Promise<void> => {
+export const loadFavoriteMichis = async (url: string): Promise<void> => {
     try {
         const request = await fetch(url);
         if (request.status !== 200) {
-            const data: ApiCatError = await request.json();
-            httpCodes(imgHttpCode, data.status);
+            const data = await errorRequest(request);
             throw new Error(`There was an error.
-                HTTP Code: ${request.status}.
-                Message: ${data.message}.`
+            HTTP Code: ${request.status}.
+            Message: ${data.message}.`
             );
         }
         const data: ApiFavoriteCat[] = await request.json();
         if (data.length !== 0) addFirstKittyParagraph.classList.add('hidden');
+        if (data.length === 0) addFirstKittyParagraph.classList.remove('hidden');
+        sectionFavoriteMichis.innerHTML = '';
         showFavoritesMichis(data);
     } catch (error) {
         if (error instanceof Error) thereWasAnErrorMessage(error);
@@ -51,10 +46,7 @@ export const loadFavoriteMichis = async (
     }
 };
 
-export const saveFavoriteMichi = async (
-        url: string,
-        id: string
-    ) => {
+export const saveFavoriteMichi = async (url: string, id: string) => {
     try {
         const request = await fetch(url, {
             method: 'POST',
@@ -66,15 +58,13 @@ export const saveFavoriteMichi = async (
             }),
         });
         if (request.status !== 200) {
-            const data: ApiCatError = await request.json();
-            httpCodes(imgHttpCode, data.status);
+            const data = await errorRequest(request);
             throw new Error(`There was an error.
                 HTTP Code: ${request.status}.
                 Message: ${data.message}.`
             );
         }
-        // const data: ApiCat[] = await request.json();
-        console.log('Save', request);
+        loadFavoriteMichis(API_URL_FAVORITES);
     } catch (error) {
         if (error instanceof Error) thereWasAnErrorMessage(error);
         showErrorSection(errorSection);
@@ -101,6 +91,27 @@ const showFavoritesMichis = (data: ApiFavoriteCat[]) => {
         article.appendChild(figure);
         article.appendChild(button);
         section?.appendChild(article);
+
+        button.onclick = () => deleteFavoriteMichi(API_URL_FAVORITE_DELETE(data[i].id));
+    }
+};
+
+const deleteFavoriteMichi = async (url: string) => {
+    try {
+        const request = await fetch(url, {
+            method: 'DELETE',
+        });
+        if (request.status !== 200) {
+            const data = await errorRequest(request);
+            throw new Error(`There was an error.
+                HTTP Code: ${request.status}.
+                Message: ${data.message}.`
+            );
+        }
+        loadFavoriteMichis(API_URL_FAVORITES);
+    } catch (error) {
+        if (error instanceof Error) thereWasAnErrorMessage(error);
+        showErrorSection(errorSection);
     }
 };
 

@@ -66,7 +66,7 @@ svg {
 
 .main__button-refresh {
   display: block;
-  margin: 3rem auto 2rem auto;
+  margin: 3rem auto;
 }
 
 .hidden {
@@ -149,13 +149,16 @@ svg {
 
 .main__title, .favorites-michis__title {
   text-align: center;
-  -webkit-margin-before: 2rem;
-          margin-block-start: 2rem;
   -webkit-margin-after: 2rem;
           margin-block-end: 2rem;
 }
 
 .favorites-michis__text {
   text-align: center;
+}
+
+.main__favorites-section-michis {
+  -webkit-margin-after: 2rem;
+          margin-block-end: 2rem;
 }
 /*# sourceMappingURL=style.css.map */
