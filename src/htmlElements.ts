@@ -9,3 +9,4 @@ export const pError = document.getElementById('main__error-id') as HTMLParagraph
 export const buttonFavorite1 = document.getElementById('ramdon-michis__button-1-id') as HTMLButtonElement;
 export const buttonFavorite2 = document.getElementById('ramdon-michis__button-2-id') as HTMLButtonElement;
 export const addFirstKittyParagraph = document.getElementById('favorites-michis__text-id') as HTMLParagraphElement;
+export const sectionFavoriteMichis = document.getElementById('favorites-michis__michis-container-id') as HTMLElement;
