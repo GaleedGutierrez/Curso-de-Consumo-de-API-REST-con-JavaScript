@@ -72,8 +72,9 @@ export const saveFavoriteMichi = async (url, id) => {
     }
 };
 const showFavoritesMichis = (data) => {
+    const toRender = [];
+    const section = document.getElementById('favorites-michis__michis-container-id');
     for (let i = 0; i < data.length; i++) {
-        const section = document.getElementById('favorites-michis__michis-container-id');
         const article = document.createElement('article');
         const figure = document.createElement('figure');
         const img = document.createElement('img');
@@ -85,13 +86,13 @@ const showFavoritesMichis = (data) => {
         img.classList.add('main__imgs-cats');
         img.src = data[i].image.url;
         img.alt = 'Your favorite cat';
-        button.appendChild(buttonText);
-        figure.appendChild(img);
-        article.appendChild(figure);
-        article.appendChild(button);
-        section?.appendChild(article);
+        button.append(buttonText);
+        figure.append(img);
+        article.append(figure, button);
+        toRender.push(article);
         button.onclick = () => deleteFavoriteMichi(API_URL_FAVORITE_DELETE(data[i].id));
     }
+    section?.append(...toRender);
 };
 const deleteFavoriteMichi = async (url) => {
     try {
