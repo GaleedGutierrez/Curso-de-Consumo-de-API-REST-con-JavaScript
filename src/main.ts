@@ -1,4 +1,4 @@
-import { API_URL_FAVORITES, API_URL_FAVORITE_DELETE, API_URL_RANDOM } from "./api.js";
+import { API_URL_FAVORITES, API_URL_FAVORITE_DELETE, API_URL_RANDOM, API_KEY } from "./api.js";
 import { errorRequest} from "./errors.js";
 import { errorSection, pError, imgs, buttonFavorite2, buttonFavorite1, addFirstKittyParagraph, sectionFavoriteMichis } from "./htmlElements.js";
 import { ApiCat, ApiFavoriteCat } from "./interfaces";
@@ -25,9 +25,14 @@ export const loadRandomMichis = async (imgs: HTMLImageElement[], url: string): P
     }
 };
 
-export const loadFavoriteMichis = async (url: string): Promise<void> => {
+const loadFavoriteMichis = async (url: string): Promise<void> => {
     try {
-        const request = await fetch(url);
+        const request = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'x-api-key': API_KEY,
+            }
+        });
         if (request.status !== 200) {
             const data = await errorRequest(request);
             throw new Error(`There was an error.
@@ -46,12 +51,13 @@ export const loadFavoriteMichis = async (url: string): Promise<void> => {
     }
 };
 
-export const saveFavoriteMichi = async (url: string, id: string) => {
+const saveFavoriteMichi = async (url: string, id: string) => {
     try {
         const request = await fetch(url, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-api-key': API_KEY,
             },
             body: JSON.stringify({
                 image_id: id
@@ -104,6 +110,9 @@ const deleteFavoriteMichi = async (url: string) => {
     try {
         const request = await fetch(url, {
             method: 'DELETE',
+            headers: {
+                'x-api-key': API_KEY,
+            }
         });
         if (request.status !== 200) {
             const data = await errorRequest(request);
