@@ -1,11 +1,11 @@
-import { API_URL_FAVORITES, API_URL_FAVORITE_DELETE, API_URL_RANDOM, API_KEY } from "./api.js";
-import { errorRequest } from "./errors.js";
-import { errorSection, pError, imgs, buttonFavorite2, buttonFavorite1, addFirstKittyParagraph, sectionFavoriteMichis, form } from "./htmlElements.js";
+import { API, API_URL_FAVORITES, API_URL_FAVORITE_DELETE, API_URL_RANDOM, API_KEY } from "./api.js";
+import { errorResponse, httpCodes } from "./errors.js";
+import { errorSection, pError, imgs, buttonFavorite2, buttonFavorite1, addFirstKittyParagraph, sectionFavoriteMichis, form, imgHttpCode } from "./htmlElements.js";
 export const loadRandomMichis = async (imgs, url) => {
     try {
         const request = await fetch(url);
         if (request.status !== 200) {
-            const data = await errorRequest(request);
+            const data = await errorResponse(request);
             throw new Error(`There was an error.
                 HTTP Code: ${request.status}.
                 Message: ${data.message}.`);
@@ -32,7 +32,7 @@ const loadFavoriteMichis = async (url) => {
             }
         });
         if (request.status !== 200) {
-            const data = await errorRequest(request);
+            const data = await errorResponse(request);
             throw new Error(`There was an error.
             HTTP Code: ${request.status}.
             Message: ${data.message}.`);
@@ -53,21 +53,24 @@ const loadFavoriteMichis = async (url) => {
 };
 const saveFavoriteMichi = async (url, id) => {
     try {
-        const request = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': API_KEY,
-            },
-            body: JSON.stringify({
-                image_id: id
-            }),
+        const { status, message } = await API_AXIOS.post('/favourites', {
+            image_id: id,
         });
-        if (request.status !== 200) {
-            const data = await errorRequest(request);
+        // const request = await fetch(url, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'x-api-key': API_KEY,
+        //     },
+        //     body: JSON.stringify({
+        //         image_id: id
+        //     }),
+        // });
+        if (status !== 200) {
+            httpCodes(imgHttpCode, status);
             throw new Error(`There was an error.
-                HTTP Code: ${request.status}.
-                Message: ${data.message}.`);
+                HTTP Code: ${status}.
+                Message: ${message}.`);
         }
         loadFavoriteMichis(API_URL_FAVORITES);
     }
@@ -109,7 +112,7 @@ const deleteFavoriteMichi = async (url) => {
             }
         });
         if (request.status !== 200) {
-            const data = await errorRequest(request);
+            const data = await errorResponse(request);
             throw new Error(`There was an error.
                 HTTP Code: ${request.status}.
                 Message: ${data.message}.`);
@@ -141,7 +144,7 @@ export const uploadMichiPhoto = async (url) => {
             body: formData
         });
         if (request.status !== 201) {
-            const data = await errorRequest(request);
+            const data = await errorResponse(request);
             throw new Error(`There was an error.
             HTTP Code: ${request.status}.
             Message: ${data.message}.`);
@@ -161,11 +164,14 @@ export const showThumbnail = () => {
     const reader = new FileReader();
     const file = formData.get('file');
     reader.readAsDataURL(file);
-    // console.log(file);
     reader.onload = () => {
         img.src = reader.result;
         img.alt = 'Your imgage.';
     };
 };
+const API_AXIOS = axios.create({
+    baseURL: API,
+});
+API_AXIOS.defaults.headers.common['x-api-key'] = API_KEY;
 loadRandomMichis(imgs, API_URL_RANDOM);
 loadFavoriteMichis(API_URL_FAVORITES);
