@@ -10,3 +10,4 @@ export const buttonFavorite1 = document.getElementById('ramdon-michis__button-1-
 export const buttonFavorite2 = document.getElementById('ramdon-michis__button-2-id') as HTMLButtonElement;
 export const addFirstKittyParagraph = document.getElementById('favorites-michis__text-id') as HTMLParagraphElement;
 export const sectionFavoriteMichis = document.getElementById('favorites-michis__michis-container-id') as HTMLElement;
+export const buttonUploadMichi = document.getElementById('main__uploadMichi-button-id') as HTMLButtonElement;

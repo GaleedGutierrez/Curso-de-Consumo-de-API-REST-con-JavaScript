@@ -130,5 +130,31 @@ const thereWasAnErrorMessage = (error) => {
     pError.innerText = error.message;
     console.log(error);
 };
+export const uploadMichiPhoto = async (url) => {
+    const form = document.getElementById('main__uploading-form-id');
+    const formData = new FormData(form);
+    try {
+        const request = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'x-api-key': API_KEY,
+            },
+            body: formData
+        });
+        if (request.status !== 201) {
+            const data = await errorRequest(request);
+            throw new Error(`There was an error.
+            HTTP Code: ${request.status}.
+            Message: ${data.message}.`);
+        }
+        const data = await request.json();
+        saveFavoriteMichi(API_URL_FAVORITES, data.id);
+    }
+    catch (error) {
+        if (error instanceof Error)
+            thereWasAnErrorMessage(error);
+        showErrorSection(errorSection);
+    }
+};
 loadRandomMichis(imgs, API_URL_RANDOM);
 loadFavoriteMichis(API_URL_FAVORITES);

@@ -17,3 +17,7 @@
     display: block;
     margin: 3rem auto;
 }
+
+.main__file-input::-webkit-file-upload-button {
+    @extend .button;
+}

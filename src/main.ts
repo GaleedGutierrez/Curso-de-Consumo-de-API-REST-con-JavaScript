@@ -1,7 +1,7 @@
 import { API_URL_FAVORITES, API_URL_FAVORITE_DELETE, API_URL_RANDOM, API_KEY } from "./api.js";
 import { errorRequest} from "./errors.js";
 import { errorSection, pError, imgs, buttonFavorite2, buttonFavorite1, addFirstKittyParagraph, sectionFavoriteMichis } from "./htmlElements.js";
-import { ApiCat, ApiFavoriteCat } from "./interfaces";
+import { ApiCat, APICatUpload, ApiFavoriteCat } from "./interfaces";
 
 export const loadRandomMichis = async (imgs: HTMLImageElement[], url: string): Promise<void> => {
     try {
@@ -51,7 +51,7 @@ const loadFavoriteMichis = async (url: string): Promise<void> => {
     }
 };
 
-const saveFavoriteMichi = async (url: string, id: string) => {
+const saveFavoriteMichi = async (url: string, id: string): Promise<void> => {
     try {
         const request = await fetch(url, {
             method: 'POST',
@@ -77,7 +77,7 @@ const saveFavoriteMichi = async (url: string, id: string) => {
     }
 };
 
-const showFavoritesMichis = (data: ApiFavoriteCat[]) => {
+const showFavoritesMichis = (data: ApiFavoriteCat[]): void => {
     const toRender: HTMLElement[] = [];
     const section = document.getElementById('favorites-michis__michis-container-id');
 
@@ -106,7 +106,7 @@ const showFavoritesMichis = (data: ApiFavoriteCat[]) => {
     section?.append(...toRender);
 };
 
-const deleteFavoriteMichi = async (url: string) => {
+const deleteFavoriteMichi = async (url: string): Promise<void> => {
     try {
         const request = await fetch(url, {
             method: 'DELETE',
@@ -128,13 +128,39 @@ const deleteFavoriteMichi = async (url: string) => {
     }
 };
 
-const showErrorSection = (errorSection: HTMLElement) => {
+const showErrorSection = (errorSection: HTMLElement): void => {
     if (errorSection.classList.contains('hidden')) errorSection.classList.remove('hidden');
 };
 
-const thereWasAnErrorMessage = (error: Error) => {
+const thereWasAnErrorMessage = (error: Error): void => {
     pError.innerText = error.message;
     console.log(error);
+};
+
+export const uploadMichiPhoto = async (url: string): Promise<void> => {
+    const form = document.getElementById('main__uploading-form-id') as HTMLFormElement;
+    const formData = new FormData(form);
+    try {
+        const request = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'x-api-key': API_KEY,
+            },
+            body: formData
+        });
+        if (request.status !== 201) {
+            const data = await errorRequest(request);
+            throw new Error(`There was an error.
+            HTTP Code: ${request.status}.
+            Message: ${data.message}.`
+            );
+        }
+        const data: APICatUpload = await request.json();
+        saveFavoriteMichi(API_URL_FAVORITES, data.id);
+    } catch (error) {
+        if (error instanceof Error) thereWasAnErrorMessage(error);
+        showErrorSection(errorSection);
+    }
 };
 
 loadRandomMichis(imgs,  API_URL_RANDOM);

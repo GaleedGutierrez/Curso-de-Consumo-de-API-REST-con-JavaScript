@@ -47,7 +47,7 @@ svg {
   width: 100%;
 }
 
-.button {
+.button, .main__file-input::-webkit-file-upload-button {
   padding: 0.8rem;
   border: 0.1rem solid transparent;
   border-radius: 1rem;
@@ -58,7 +58,7 @@ svg {
   font-weight: 500;
 }
 
-.button:active {
+.button:active, .main__file-input:active::-webkit-file-upload-button {
   background-color: #ffffff;
   border: 0.1rem solid #91B888;
   color: #91B888;
@@ -159,5 +159,13 @@ svg {
 .main__favorites-section-michis {
   -webkit-margin-after: 2rem;
           margin-block-end: 2rem;
+}
+
+.main__uploadingMichi {
+  text-align: center;
+}
+
+.main__file-input {
+  margin-block: 1.2rem;
 }
 /*# sourceMappingURL=style.css.map */
