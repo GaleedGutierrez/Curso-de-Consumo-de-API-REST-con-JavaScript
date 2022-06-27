@@ -1,6 +1,6 @@
 import { API_URL_FAVORITES, API_URL_FAVORITE_DELETE, API_URL_RANDOM, API_KEY } from "./api.js";
 import { errorRequest } from "./errors.js";
-import { errorSection, pError, imgs, buttonFavorite2, buttonFavorite1, addFirstKittyParagraph, sectionFavoriteMichis } from "./htmlElements.js";
+import { errorSection, pError, imgs, buttonFavorite2, buttonFavorite1, addFirstKittyParagraph, sectionFavoriteMichis, form } from "./htmlElements.js";
 export const loadRandomMichis = async (imgs, url) => {
     try {
         const request = await fetch(url);
@@ -131,7 +131,6 @@ const thereWasAnErrorMessage = (error) => {
     console.log(error);
 };
 export const uploadMichiPhoto = async (url) => {
-    const form = document.getElementById('main__uploading-form-id');
     const formData = new FormData(form);
     try {
         const request = await fetch(url, {
@@ -155,6 +154,18 @@ export const uploadMichiPhoto = async (url) => {
             thereWasAnErrorMessage(error);
         showErrorSection(errorSection);
     }
+};
+export const showThumbnail = () => {
+    const img = document.getElementById('uploadingMichi__img-id');
+    const formData = new FormData(form);
+    const reader = new FileReader();
+    const file = formData.get('file');
+    reader.readAsDataURL(file);
+    // console.log(file);
+    reader.onload = () => {
+        img.src = reader.result;
+        img.alt = 'Your imgage.';
+    };
 };
 loadRandomMichis(imgs, API_URL_RANDOM);
 loadFavoriteMichis(API_URL_FAVORITES);

@@ -21,7 +21,8 @@ block main
             h2 Upload a photo of your michi
             form(action="" method="method")#main__uploading-form-id
                 label(for="file")
-                    input(type="file" name="file" )#main__file-input-id.main__file-input
+                    input(type="file" name="file")#main__file-input-id.main__file-input
+            +img("uploadingMichi__img-id", "uploadingMichi__img", "").uploadingMichi__figure
             button(type="button").button#main__uploadMichi-button-id.main__uploadMichi-button Upload photo
         section#main__favorites-michis-section-id.main__favorites-section-michis
             h2.favorites-michis__title ❤️ Favorite Cat ❤️
