@@ -11,3 +11,5 @@ export const buttonFavorite2 = document.getElementById('ramdon-michis__button-2-
 export const addFirstKittyParagraph = document.getElementById('favorites-michis__text-id') as HTMLParagraphElement;
 export const sectionFavoriteMichis = document.getElementById('favorites-michis__michis-container-id') as HTMLElement;
 export const buttonUploadMichi = document.getElementById('main__uploadMichi-button-id') as HTMLButtonElement;
+export const inputUploadImg = document.getElementById('main__file-input-id') as HTMLInputElement;
+export const form = document.getElementById('main__uploading-form-id') as HTMLFormElement;

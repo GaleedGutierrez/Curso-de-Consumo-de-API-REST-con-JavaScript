@@ -69,6 +69,11 @@ svg {
   margin: 3rem auto;
 }
 
+.main__uploadMichi-button {
+  -webkit-margin-before: 1.2rem;
+          margin-block-start: 1.2rem;
+}
+
 .hidden {
   display: none;
 }
@@ -167,5 +172,14 @@ svg {
 
 .main__file-input {
   margin-block: 1.2rem;
+}
+
+.uploadingMichi__figure {
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.uploadingMichi__img {
+  border-radius: 2rem;
 }
 /*# sourceMappingURL=style.css.map */
