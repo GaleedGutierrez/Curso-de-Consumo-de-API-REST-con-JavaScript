@@ -26,3 +26,11 @@ export interface ImageFavoriteCat {
     id:  string;
     url: string;
 }
+
+export interface APICatUpload {
+    approved:         number;
+    id:               string;
+    originalFilename: string;
+    pending:          number;
+    url:              string;
+}

@@ -17,7 +17,14 @@ block main
                 +img("random-michis__img-cat-2-id", "main__imgs-cats", "Image cat random")#main__figure-img-container-2-id.main__figure-img-container.main__figure-img
                 button#ramdon-michis__button-2-id.ramdon-michis__button.button Save Michi
         button#main__button-refresh-id.button.main__button-refresh Refresh
+        section#main__uploadingMichi-id.main__uploadingMichi
+            h2 Upload a photo of your michi
+            form(action="" method="method")#main__uploading-form-id
+                label(for="file")
+                    input(type="file" name="file" )#main__file-input-id.main__file-input
+            button(type="button").button#main__uploadMichi-button-id.main__uploadMichi-button Upload photo
         section#main__favorites-michis-section-id.main__favorites-section-michis
             h2.favorites-michis__title ❤️ Favorite Cat ❤️
             p#favorites-michis__text-id.favorites-michis__text Add your fisrt kitty
             section#favorites-michis__michis-container-id.main__figures-buttons-containers
+
